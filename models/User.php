@@ -6,24 +6,25 @@
  * Time: 14:49
  */
 
-namespace ajnok\models;
+namespace ajnok\account\models;
 
 use dektrium\user\models\User as BaseUser;
 use yii\helpers\ArrayHelper;
 
-class Account extends BaseUser
+class User extends BaseUser
 {
-    public $passcode;
-    private static $_passcheck = 'oateam';
+    public static $idcardRegexp = '/^[0-9]+$/';
+    public static $phoneRegexp = '/^[0-9]+$/';
+    
     public function scenarios()
     {
         $scenarios = parent::scenarios();
         // add field to scenarios
 //        $scenarios['register'][] = 'passcode';
 //        return $scenarios;
-        return ArrayHelper::merge($scenarios, [
-            'register' => ['!passcode'],
-        ]);
+//        return ArrayHelper::merge($scenarios, [
+//            'register' => ['!passcode'],
+//        ]);
 
     }
 
