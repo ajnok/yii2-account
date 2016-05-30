@@ -13,6 +13,7 @@
     "require": {
         "yiisoft/yii2": "*",
         "dektrium/yii2-user": "0.9.*@dev",
+        "kartik-v/yii2-widgets": "*"
     },
     "autoload": {
         "psr-4": {
