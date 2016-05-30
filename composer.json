@@ -1,0 +1,21 @@
+{
+    "name": "ajnok/yii2-account",
+    "description": "Yii2-Account Based on Yii2-User Original by Dektrium",
+    "type": "yii2-extension",
+    "keywords": ["yii2-user","yii2-account"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mr.Eakkarath Panyathep",
+            "email": "ajnokit@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ajnok\\account\\": ""
+        }
+    }
+}
