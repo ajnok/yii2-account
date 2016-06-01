@@ -11,6 +11,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use ajnok\account\models\Profile;
+use yii\helpers\ArrayHelper;
+use ajnok\account\models\Title;
 
 /**
  * @var yii\web\View              $this
@@ -30,18 +33,26 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="panel-body">
                 <?php $form = ActiveForm::begin([
                     'id'                     => 'registration-form',
-//                    'enableAjaxValidation'   => true,
-//                    'enableClientValidation' => true,
+                    'enableAjaxValidation'   => true,
+                    'enableClientValidation' => true,
                 ]); ?>
-                <?= $form->field($model, 'title_id') ?>
-                <?= $form->field($model, 'firstname') ?>
-                <?= $form->field($model, 'lastname') ?>
-                <?= $form->field($model, 'idcard') ?>
-                <?= $form->field($model, 'phone') ?>
-                <?= $form->field($model, 'passcode') ?>
-                <?= $form->field($model, 'email') ?>
+<!--                 $form->field($model, 'title_id')->textInput(['enableAjaxValidation'=>false])-->
+                <?= $form->field($model, 'title_id')->dropDownList(
+                        ArrayHelper::map(Title::find()->all(),'title_id','name'),
+                        [
+                            'id' => 'ddl-title',
+                            'prompt' => 'กรุณาเลือกคำนำหน้า'
+                        ]
+                    )
+                ?>
+                <?= $form->field($model, 'firstname')->textInput(['enableAjaxValidation'=>true,'maxlength'=>100]) ?>
+                <?= $form->field($model, 'lastname')->textInput(['enableAjaxValidation'=>true,'maxlength'=>100]) ?>
+                <?= $form->field($model, 'idcard')->textInput(['enableAjaxValidation'=>true,'maxlength'=>13]) ?>
+                <?= $form->field($model, 'phone')->textInput(['enableAjaxValidation'=>false,'maxlength'=>10]) ?>
+                <?= $form->field($model, 'passcode')->textInput(['enableAjaxValidation'=>false]) ?>
+                <?= $form->field($model, 'email')->textInput(['maxlength'=>255]) ?>
 
-                <?= $form->field($model, 'username') ?>
+                <?= $form->field($model, 'username')->textInput(['maxlength'=>25]) ?>
 
                 <?php if ($module->enableGeneratingPassword == false): ?>
                     <?= $form->field($model, 'password')->passwordInput() ?>
